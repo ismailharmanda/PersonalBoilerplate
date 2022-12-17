@@ -2,10 +2,15 @@ import { AnyAction } from 'redux';
 
 export interface IGenericAction {
   /* eslint-disable  @typescript-eslint/no-explicit-any */
-  <T extends { payload?: any; type: any }>({ payload, type }: T): AnyAction;
+  <T extends { type?: any; payload?: any }>({ type, payload }: T): AnyAction;
 }
 
-export const GenericActionCreator: IGenericAction = ({ payload, type }): AnyAction => ({
+export const GenericActionCreator: IGenericAction = ({ type, payload }): AnyAction => ({
   type,
   payload,
 });
+
+export enum MAIN_ROUTES {
+  LOGIN = 'Login',
+  DASHBOARD = 'Dashboard',
+}
