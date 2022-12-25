@@ -1,29 +1,28 @@
 import { FormControl, Input, Text } from 'native-base';
 import React from 'react';
-import { Control, Controller, FieldError, Path, RegisterOptions } from 'react-hook-form';
+import { Control, Controller, FieldError, Path, RegisterOptions, FieldValues } from 'react-hook-form';
 
 interface FormInputControllerProps<FieldsType> {
   name: Path<FieldsType>;
   defaultValue?: string;
   rules?: RegisterOptions;
   error?: FieldError;
-  control: Control<FieldsType>;
-}
-
-interface Props<FieldsType> extends FormInputControllerProps<FieldsType> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any, any>;
+  size?: string;
   label?: string;
   placeholder?: string;
 }
 
-const FormInputController = <FieldsType,>({ error, rules, label, control, name, placeholder, ...rest }: Props<FieldsType>) => {
+const FormInputController = <FieldsType,>({ error, rules, label, control, name, placeholder, size = 'md', ...rest }: FormInputControllerProps<FieldsType>) => {
   const isInvalid = error != null;
   const isRequired = rules != null && 'required' in rules;
 
   return (
-    <FormControl isInvalid={isInvalid} isRequired={isRequired}>
+    <FormControl isInvalid={isInvalid} isRequired={isRequired} marginBottom={2}>
       {label != null && (
         <FormControl.Label>
-          <Text fontWeight="bold" color="dark.200" fontSize="md">
+          <Text fontWeight="medium" color="dark.200" fontSize="md">
             {label}
           </Text>
         </FormControl.Label>
@@ -33,14 +32,19 @@ const FormInputController = <FieldsType,>({ error, rules, label, control, name, 
         name={name}
         render={({ field: { onChange, onBlur, value } }) => (
           <Input
-            fontSize="md"
+            size={size}
             borderRadius={8}
-            color="dark.300"
+            color="dark.100"
             autoCapitalize="none"
-            backgroundColor={'gray.200'}
             placeholder={placeholder}
+            padding="3"
             value={value}
             onBlur={onBlur}
+            fontSize="md"
+            borderWidth="0"
+            backgroundColor="#f4f4f4"
+            placeholderTextColor={'gray'}
+            fontWeight="normal"
             onChangeText={(val) => onChange(val)}
             {...rest}
           />

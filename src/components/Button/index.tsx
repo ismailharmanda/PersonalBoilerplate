@@ -4,6 +4,7 @@ import { Button, Text } from 'native-base';
 interface PrimaryButtonProps {
   onPress: () => void;
   buttonText: string;
+  marginTop?: number;
 }
 
 const PrimaryButton = ({ onPress, buttonText, ...props }: PrimaryButtonProps) => {

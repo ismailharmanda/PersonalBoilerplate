@@ -17,6 +17,7 @@ import { theme } from 'theme';
 import { NativeBaseProvider } from 'native-base';
 import { Provider } from 'react-redux';
 import store from 'store';
+import SignUpScreen from 'pages/SignUp';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ function App() {
           <Stack.Navigator>
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Dashboard" component={DashboardScreen} />
+            <Stack.Screen name="SignUp" component={SignUpScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
