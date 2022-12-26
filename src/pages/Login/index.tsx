@@ -38,7 +38,7 @@ const LoginScreen = () => {
   }, []);
 
   return (
-    <Center flex={1} padding={10} justifyContent="center" backgroundColor={'white'}>
+    <Center flex={1} padding={5} justifyContent="center" backgroundColor={'white'}>
       <FormInputController
         size="2xl"
         control={control}

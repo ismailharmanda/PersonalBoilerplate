@@ -1,6 +1,6 @@
 import { FormControl, Input, Text } from 'native-base';
 import React from 'react';
-import { Control, Controller, FieldError, Path, RegisterOptions, FieldValues } from 'react-hook-form';
+import { Control, Controller, FieldError, Path, RegisterOptions } from 'react-hook-form';
 
 interface FormInputControllerProps<FieldsType> {
   name: Path<FieldsType>;
@@ -14,7 +14,7 @@ interface FormInputControllerProps<FieldsType> {
   placeholder?: string;
 }
 
-const FormInputController = <FieldsType,>({ error, rules, label, control, name, placeholder, size = 'md', ...rest }: FormInputControllerProps<FieldsType>) => {
+const FormInputController = <FieldsType,>({ error, rules, label, control, name, placeholder, size = 'xl', ...rest }: FormInputControllerProps<FieldsType>) => {
   const isInvalid = error != null;
   const isRequired = rules != null && 'required' in rules;
 
@@ -37,10 +37,10 @@ const FormInputController = <FieldsType,>({ error, rules, label, control, name, 
             color="dark.100"
             autoCapitalize="none"
             placeholder={placeholder}
-            padding="3"
+            padding="3.5"
             value={value}
             onBlur={onBlur}
-            fontSize="md"
+            fontSize="sm"
             borderWidth="0"
             backgroundColor="#f4f4f4"
             placeholderTextColor={'gray'}
